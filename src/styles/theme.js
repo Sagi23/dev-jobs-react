@@ -1,17 +1,21 @@
 import { createGlobalStyle } from "styled-components";
 
 export const lightTheme = {
-  body: "#ffffff",
+  body: "#f3f3f3",
   fontColor: "#313131",
   headerColor: "#34729d",
   descriptionColor: "#ffffff",
+  formColor: "#ffffff",
+  btnColor: "#5964e0",
 };
 
 export const darkTheme = {
-  body: "#171f24",
+  body: "#19202d",
   fontColor: "#e0e0e0",
   headerColor: "#449ddb",
   descriptionColor: "#1b2a35",
+  formColor: "#121721",
+  btnColor: "#5964e0",
 };
 
 export const mediaQueries = {

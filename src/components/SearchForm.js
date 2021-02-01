@@ -46,23 +46,27 @@ const SearchForm = () => {
 };
 
 const IconLabel = styled.label`
-  color: ${({ theme }) => theme.headerColor};
+  color: ${({ theme }) => theme.btnColor};
   padding-right: 0.5rem;
 `;
 
 const FullLabel = styled.label`
   color: black;
   margin: 0 1rem;
+  color: ${({ theme }) => theme.fontColor};
 `;
 
 const StyledTextInput = styled.input`
   border: none;
   font-size: 1.2rem;
   width: 80%;
+  background: transparent;
+  color: ${({ theme }) => theme.fontColor};
 `;
 
 const Divider = styled.span`
   border-right: 1px solid black;
+  border-color: ${({ theme }) => theme.fontColor};
   @media ${mediaQueries.md} {
     border-right: none;
   }
@@ -70,9 +74,9 @@ const Divider = styled.span`
 
 const StyledFormContainer = styled.form`
   border-radius: 10px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.formColor};
   width: 80%;
-  margin: 0 auto 0;
+  margin: -2rem auto 0;
   padding: 1em;
   display: grid;
   grid-template-columns: 0.5fr 0.5fr 0.4fr 0.3fr;
@@ -85,12 +89,13 @@ const StyledFormContainer = styled.form`
 
 const StyledBtn = styled.button`
   padding: 0.5rem 1rem;
-  color: ${({ theme }) => theme.fontColor};
-  background-color: ${({ theme }) => theme.headerColor};
+  color: white;
+  background-color: ${({ theme }) => theme.btnColor};
   border: none;
   border-radius: 0.5rem;
   margin-left: 0rem;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 export default SearchForm;
