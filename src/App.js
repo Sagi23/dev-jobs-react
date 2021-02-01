@@ -8,11 +8,10 @@ import CardList from "./components/CardList";
 function App() {
   const [theme, setTheme] = useState("dark");
   const [results, setResults] = useState([]);
-
   const themeToggler = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");
   };
-  console.log(results);
+
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <GlobalStyles />

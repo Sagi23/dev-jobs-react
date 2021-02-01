@@ -13,7 +13,7 @@ const CardList = ({ results }) => {
       title={result.title}
       type={result.type}
       location={result.location}
-      link={result.how_to_apply}
+      link={result.url}
     />
   ));
   return <Container>{renderdCards}</Container>;

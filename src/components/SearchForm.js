@@ -13,10 +13,14 @@ const SearchForm = ({ setResults }) => {
   );
   const [fullTime, setFullTime] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const getData = async (description, fullTime, location) => {
+    setIsLoading(true);
     const { data } = await getJobs.get(
       `description=${description}&full_time=${fullTime}&location=${location}&markdown=true`
     );
+    setIsLoading(false);
     setResults(data);
     resetName();
     resetLocation();
@@ -28,41 +32,47 @@ const SearchForm = ({ setResults }) => {
   };
 
   return (
-    <StyledFormContainer onSubmit={(e) => handleSumit(e)}>
-      <Divider>
-        <IconLabel htmlFor="search">
-          <BsSearch />
-        </IconLabel>
-        <StyledTextInput
-          type="text"
-          id="search"
-          value={nameValue}
-          onChange={(e) => handleNameChange(e)}
-          placeholder="Search by Title"
-        />
-      </Divider>
-      <Divider>
-        <IconLabel htmlFor="location">
-          <GoLocation />
-        </IconLabel>
-        <StyledTextInput
-          type="text"
-          id="location"
-          value={locationValue}
-          onChange={(e) => handleLocationChange(e)}
-          placeholder="Search by Location"
-        />
-      </Divider>
-      <Divider>
-        <input
-          type="checkbox"
-          id="checkbox"
-          onClick={() => setFullTime(!fullTime)}
-        />
-        <FullLabel htmlFor="checkbox">Full Time Only</FullLabel>
-      </Divider>
-      <StyledBtn type="submit">Submit</StyledBtn>
-    </StyledFormContainer>
+    <>
+      {isLoading ? (
+        <h2 style={{ textAlign: "center", marginTop: "2rem" }}>Loading</h2>
+      ) : (
+        <StyledFormContainer onSubmit={(e) => handleSumit(e)}>
+          <Divider>
+            <IconLabel htmlFor="search">
+              <BsSearch />
+            </IconLabel>
+            <StyledTextInput
+              type="text"
+              id="search"
+              value={nameValue}
+              onChange={(e) => handleNameChange(e)}
+              placeholder="Search by Title"
+            />
+          </Divider>
+          <Divider>
+            <IconLabel htmlFor="location">
+              <GoLocation />
+            </IconLabel>
+            <StyledTextInput
+              type="text"
+              id="location"
+              value={locationValue}
+              onChange={(e) => handleLocationChange(e)}
+              placeholder="Search by Location"
+            />
+          </Divider>
+          <Divider>
+            <input
+              type="checkbox"
+              id="checkbox"
+              onClick={() => setFullTime(!fullTime)}
+            />
+            <FullLabel htmlFor="checkbox">Full Time Only</FullLabel>
+          </Divider>
+          <StyledBtn type="submit">Submit</StyledBtn>
+        </StyledFormContainer>
+      )}
+    </>
   );
 };
 

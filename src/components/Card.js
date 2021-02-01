@@ -12,7 +12,6 @@ const Card = ({
   link,
 }) => {
   let date = created_at.slice(4, 10);
-
   return (
     <Container>
       <StyledImg src={company_logo} alt={company} />
