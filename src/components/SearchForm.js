@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import useInputState from "../hooks/useInputState";
 import styled from "styled-components";
 import { mediaQueries } from "../styles/theme";
+import { getJobs } from "../api/githubJobs";
 
-const SearchForm = () => {
+const SearchForm = ({ setResults }) => {
   const [nameValue, handleNameChange, resetName] = useInputState("");
   const [locationValue, handleLocationChange, resetLocation] = useInputState(
     ""
   );
+  const [fullTime, setFullTime] = useState(false);
+
+  const getData = async (description, fullTime, location) => {
+    const { data } = await getJobs.get(
+      `description=${description}&full_time=${fullTime}&location=${location}&markdown=true`
+    );
+    setResults(data);
+  };
+
+  const handleSumit = (e) => {
+    e.preventDefault();
+    getData(nameValue, fullTime, locationValue);
+  };
+
   return (
-    <StyledFormContainer>
+    <StyledFormContainer onSubmit={(e) => handleSumit(e)}>
       <Divider>
         <IconLabel htmlFor="search">
           <BsSearch />
@@ -37,10 +52,14 @@ const SearchForm = () => {
         />
       </Divider>
       <Divider>
-        <input type="checkbox" id="checkbox" />
+        <input
+          type="checkbox"
+          id="checkbox"
+          onClick={() => setFullTime(!fullTime)}
+        />
         <FullLabel htmlFor="checkbox">Full Time Only</FullLabel>
       </Divider>
-      <StyledBtn>Submit</StyledBtn>
+      <StyledBtn type="submit">Submit</StyledBtn>
     </StyledFormContainer>
   );
 };
