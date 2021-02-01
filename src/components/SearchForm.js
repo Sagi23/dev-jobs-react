@@ -18,6 +18,8 @@ const SearchForm = ({ setResults }) => {
       `description=${description}&full_time=${fullTime}&location=${location}&markdown=true`
     );
     setResults(data);
+    resetName();
+    resetLocation();
   };
 
   const handleSumit = (e) => {

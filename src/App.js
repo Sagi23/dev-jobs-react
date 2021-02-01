@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { lightTheme, darkTheme, GlobalStyles } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import SearchForm from "./components/SearchForm";
 import Header from "./components/Header";
+import CardList from "./components/CardList";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -18,6 +19,7 @@ function App() {
       <div className="App">
         <Header theme={theme} themeToggler={themeToggler} />
         <SearchForm setResults={setResults} />
+        <CardList results={results} />
       </div>
     </ThemeProvider>
   );
