@@ -61,6 +61,7 @@ const Container = styled.div`
 
 const StyledDiv = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
   margin: 2rem 0;
 `;
