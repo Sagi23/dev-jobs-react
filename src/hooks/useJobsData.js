@@ -23,9 +23,7 @@ const useJobsData = () => {
   return {
     getData,
     results,
-    setResults,
     isLoading,
-    setIsLoading,
     pageNum,
     setPageNum,
   };

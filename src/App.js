@@ -11,8 +11,8 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [nameValue, handleNameChange] = useInputState("");
   const [locationValue, handleLocationChange] = useInputState("");
-
   const [fullTime, setFullTime] = useState(false);
+
   const { getData, isLoading, results, pageNum, setPageNum } = useJobsData();
 
   const themeToggler = () => {

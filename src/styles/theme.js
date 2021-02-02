@@ -20,8 +20,6 @@ export const darkTheme = {
 
 export const mediaQueries = {
   md: `(max-width: 900px)`,
-  lg: `(min-width: 900px)`,
-  mid: `(max-width: 1599px)`,
 };
 
 export const GlobalStyles = createGlobalStyle`

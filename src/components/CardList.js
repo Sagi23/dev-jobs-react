@@ -18,7 +18,6 @@ const CardList = ({
       company={result.company}
       company_logo={result.company_logo}
       created_at={result.created_at}
-      description={result.description}
       title={result.title}
       type={result.type}
       location={result.location}
