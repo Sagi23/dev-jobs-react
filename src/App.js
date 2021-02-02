@@ -22,7 +22,7 @@ function App() {
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <div className="App">
+      <>
         <Header theme={theme} themeToggler={themeToggler} />
         <SearchForm
           getData={getData}
@@ -46,7 +46,7 @@ function App() {
           page={pageNum}
           setPageNum={setPageNum}
         />
-      </div>
+      </>
     </ThemeProvider>
   );
 }
