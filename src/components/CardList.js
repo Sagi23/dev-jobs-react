@@ -37,7 +37,9 @@ const CardList = ({
     <Container>
       {renderdCards}
       {results.length > 0 ? (
-        <button onClick={handleClick}>Load More</button>
+        <StyledDiv>
+          <StyledBtn onClick={handleClick}>Load More</StyledBtn>
+        </StyledDiv>
       ) : null}
     </Container>
   );
@@ -50,6 +52,23 @@ const Container = styled.div`
   margin: 5rem auto 0;
   gap: 2rem;
   justify-content: center;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+`;
+
+const StyledBtn = styled.button`
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: ${({ theme }) => theme.btnColor};
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 0rem;
+  font-size: 16px;
+  cursor: pointer;
 `;
 
 export default CardList;
