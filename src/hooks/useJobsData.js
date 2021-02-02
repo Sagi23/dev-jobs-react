@@ -11,15 +11,15 @@ const useJobsData = () => {
     const { data } = await getJobs.get(
       `description=${description}&page=${page}&location=${location}&full_time=${fullTime}&markdown=true`
     );
-    setResults(data);
     if (results.length === 0) {
       setResults(data);
     } else {
-      data.map((i) => setResults([...results, i]));
+      for (let i of data) {
+        results.push(i);
+      }
     }
     setIsLoading(false);
   };
-  console.log(results);
   return {
     getData,
     results,
