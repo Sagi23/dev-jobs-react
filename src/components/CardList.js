@@ -37,9 +37,15 @@ const CardList = ({
     <Container>
       {renderdCards}
       {results.length > 0 ? (
-        <StyledDiv>
-          <StyledBtn onClick={handleClick}>Load More</StyledBtn>
-        </StyledDiv>
+        isLoading ? (
+          <StyledDiv>
+            <h2>Loading</h2>
+          </StyledDiv>
+        ) : (
+          <StyledDiv>
+            <StyledBtn onClick={handleClick}>Load More</StyledBtn>
+          </StyledDiv>
+        )
       ) : null}
     </Container>
   );
