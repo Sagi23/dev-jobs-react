@@ -21,7 +21,11 @@ const useJobsData = () => {
       }
       setIsLoading(false);
     } catch (error) {
-      alert("oops somthing went wrong please try again later");
+      console.log(error);
+      setIsLoading(false);
+      alert(
+        "oops somthing went wrong (there was a problem reaching to the server) please try again later"
+      );
     }
   };
   return {
