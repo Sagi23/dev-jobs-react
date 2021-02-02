@@ -2,7 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
 
-const CardList = ({ results }) => {
+const CardList = ({
+  results,
+  getData,
+  isLoading,
+  nameValue,
+  locationValue,
+  fullTime,
+  page,
+  setPageNum,
+}) => {
   const renderdCards = results.map((result) => (
     <Card
       key={result.id}
@@ -16,7 +25,22 @@ const CardList = ({ results }) => {
       link={result.url}
     />
   ));
-  return <Container>{renderdCards}</Container>;
+
+  const handleClick = () => {
+    parseInt(page);
+    setPageNum(page + 1);
+    toString(page);
+    getData(nameValue, fullTime, locationValue, page);
+    console.log(page);
+  };
+  return (
+    <Container>
+      {renderdCards}
+      {results.length > 0 ? (
+        <button onClick={handleClick}>Load More</button>
+      ) : null}
+    </Container>
+  );
 };
 
 const Container = styled.div`

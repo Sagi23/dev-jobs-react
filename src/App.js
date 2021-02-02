@@ -4,10 +4,17 @@ import { ThemeProvider } from "styled-components";
 import SearchForm from "./components/SearchForm";
 import Header from "./components/Header";
 import CardList from "./components/CardList";
+import useJobsData from "./hooks/useJobsData";
+import useInputState from "./hooks/useInputState";
 
 function App() {
   const [theme, setTheme] = useState("dark");
-  const [results, setResults] = useState([]);
+  const [nameValue, handleNameChange] = useInputState("");
+  const [locationValue, handleLocationChange] = useInputState("");
+
+  const [fullTime, setFullTime] = useState(false);
+  const { getData, isLoading, results, pageNum, setPageNum } = useJobsData();
+
   const themeToggler = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");
   };
@@ -17,8 +24,28 @@ function App() {
       <GlobalStyles />
       <div className="App">
         <Header theme={theme} themeToggler={themeToggler} />
-        <SearchForm setResults={setResults} />
-        <CardList results={results} />
+        <SearchForm
+          getData={getData}
+          isLoading={isLoading}
+          nameValue={nameValue}
+          handleNameChange={handleNameChange}
+          locationValue={locationValue}
+          handleLocationChange={handleLocationChange}
+          fullTime={fullTime}
+          setFullTime={setFullTime}
+          page={pageNum}
+          setPageNum={setPageNum}
+        />
+        <CardList
+          results={results}
+          getData={getData}
+          isLoading={isLoading}
+          nameValue={nameValue}
+          locationValue={locationValue}
+          fullTime={fullTime}
+          page={pageNum}
+          setPageNum={setPageNum}
+        />
       </div>
     </ThemeProvider>
   );

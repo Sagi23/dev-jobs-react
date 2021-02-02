@@ -1,34 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsSearch } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
-import useInputState from "../hooks/useInputState";
 import styled from "styled-components";
 import { mediaQueries } from "../styles/theme";
-import { getJobs } from "../api/githubJobs";
 
-const SearchForm = ({ setResults }) => {
-  const [nameValue, handleNameChange, resetName] = useInputState("");
-  const [locationValue, handleLocationChange, resetLocation] = useInputState(
-    ""
-  );
-  const [fullTime, setFullTime] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  const getData = async (description, fullTime, location) => {
-    setIsLoading(true);
-    const { data } = await getJobs.get(
-      `description=${description}&full_time=${fullTime}&location=${location}&markdown=true`
-    );
-    setIsLoading(false);
-    setResults(data);
-    resetName();
-    resetLocation();
-  };
-
+const SearchForm = ({
+  getData,
+  isLoading,
+  nameValue,
+  handleNameChange,
+  locationValue,
+  handleLocationChange,
+  fullTime,
+  setFullTime,
+  page,
+  setPageNum,
+}) => {
   const handleSumit = (e) => {
     e.preventDefault();
-    getData(nameValue, fullTime, locationValue);
+    setPageNum(1);
+    getData(nameValue, fullTime, locationValue, page);
   };
 
   return (
