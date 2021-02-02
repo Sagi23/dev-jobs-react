@@ -15,10 +15,12 @@ const SearchForm = ({
   setFullTime,
   page,
   setPageNum,
+  setResults,
 }) => {
   const handleSumit = (e) => {
     e.preventDefault();
     setPageNum(1);
+    setResults([]);
     getData(nameValue, fullTime, locationValue, page);
   };
 
