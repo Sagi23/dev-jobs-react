@@ -24,7 +24,7 @@ const Header = ({ theme, themeToggler }) => {
 const Container = styled.div`
   padding: 5rem 0;
   background-image: url(${bg});
-  background-size: 100%;
+  background-size: 100% 100%;
 `;
 
 const StyledDiv = styled.div`
