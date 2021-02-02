@@ -13,14 +13,7 @@ function App() {
   const [locationValue, handleLocationChange] = useInputState("");
   const [fullTime, setFullTime] = useState(false);
 
-  const {
-    getData,
-    isLoading,
-    results,
-    pageNum,
-    setPageNum,
-    setResults,
-  } = useJobsData();
+  const { getData, isLoading, results, pageNum, setPageNum } = useJobsData();
 
   const themeToggler = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");
@@ -42,7 +35,6 @@ function App() {
           setFullTime={setFullTime}
           page={pageNum}
           setPageNum={setPageNum}
-          setResults={setResults}
         />
         <CardList
           results={results}

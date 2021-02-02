@@ -34,7 +34,6 @@ const useJobsData = () => {
     isLoading,
     pageNum,
     setPageNum,
-    setResults,
   };
 };
 
