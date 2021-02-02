@@ -12,13 +12,8 @@ const useJobsData = () => {
       const { data } = await getJobs.get(
         `description=${description}&page=${page}&location=${location}&full_time=${fullTime}&markdown=true`
       );
-      if (results.length === 0) {
-        setResults(data);
-      } else {
-        for (let i of data) {
-          results.push(i);
-        }
-      }
+      setResults(data);
+      window.scrollTo(0, 0);
       setIsLoading(false);
     } catch (error) {
       console.log(error);

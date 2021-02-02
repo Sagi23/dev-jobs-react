@@ -25,13 +25,20 @@ const CardList = ({
     />
   ));
 
-  const handleClick = () => {
+  const handleGetMoreClick = () => {
     parseInt(page);
     setPageNum(page + 1);
     toString(page);
     getData(nameValue, fullTime, locationValue, page);
-    console.log(page);
   };
+
+  const handleGoBackClick = () => {
+    parseInt(page);
+    setPageNum(page - 1);
+    toString(page);
+    getData(nameValue, fullTime, locationValue, page);
+  };
+
   return (
     <Container>
       {renderdCards}
@@ -42,7 +49,15 @@ const CardList = ({
           </StyledDiv>
         ) : (
           <StyledDiv>
-            <StyledBtn onClick={handleClick}>Load More</StyledBtn>
+            {page > 1 && (
+              <StyledBtn
+                style={{ margin: "0 2rem" }}
+                onClick={handleGoBackClick}
+              >
+                Go Back
+              </StyledBtn>
+            )}
+            <StyledBtn onClick={handleGetMoreClick}>Load More</StyledBtn>
           </StyledDiv>
         )
       ) : null}
